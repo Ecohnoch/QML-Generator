@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>font/Hiragino Sans GB W3.otf</file>
+        <file>font/PingFangM.ttf</file>
+        <file>font/STKaiTi.ttf</file>
+        <file>font/liberationmono.ttf</file>
+    </qresource>
+</RCC>

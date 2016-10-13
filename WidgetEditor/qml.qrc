@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>WEButtons.qml</file>
+        <file>WERect.qml</file>
+        <file>WECanvas.qml</file>
+        <file>WEText.qml</file>
+        <file>WELabel.qml</file>
+    </qresource>
+</RCC>
