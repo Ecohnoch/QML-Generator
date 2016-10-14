@@ -4,5 +4,6 @@
         <file>font/PingFangM.ttf</file>
         <file>font/STKaiTi.ttf</file>
         <file>font/liberationmono.ttf</file>
+        <file>image/actor.png</file>
     </qresource>
 </RCC>

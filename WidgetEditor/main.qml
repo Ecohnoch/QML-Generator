@@ -16,7 +16,9 @@ ApplicationWindow {
             title: "File"
             MenuItem{
                 text: "OutPut"
-                onTriggered: {outPut.show()}
+                onTriggered: {
+                    outPut.textShow()
+                    outPut.show()}
             }
             MenuItem{
                 text: "InPut"
@@ -52,9 +54,6 @@ ApplicationWindow {
         id: outPut
     }
 
-    WERect{
-
-    }
 
 
 

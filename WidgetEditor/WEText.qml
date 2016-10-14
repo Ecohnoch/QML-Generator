@@ -16,8 +16,26 @@ Window {
         Layout.fillWidth: true
         Layout.fillHeight: true
         font.family: uiFont.name
+        text:"import QtQuick 2.7\nItem{\n    id: root\n    width: 720\n    height: 480\n"
     }
     function addText(position, text){
         mainText.insert(position, text)
+    }
+    function changeText(start, end, text){
+        mainText.remove(start, end)
+        mainText.insert(start, text)
+    }
+    function getText(start, end){
+        mainText.getText(start, end)
+    }
+    function getTextLength(){
+        return mainText.text.length
+    }
+    function textShow(){
+        mainText.text = "import QtQuick 2.7\nItem{\n    id: root\n    width: 720\n    height: 480\n"
+        canvas.getData()
+        for(var i = 0; i < canvas.recData.length; i++){
+            outPut.addText(outPut.getTextLength(), canvas.recData[i])
+        }
     }
 }

@@ -17,8 +17,8 @@ Item {
         id: propertyChange
         x: propertyName.x + propertyName.width; y: 0
         anchors.centerIn: parent
-        onActiveFocusChanged: text = propertyChange.text
-        font.family: uiFont.name
 
+        onActiveFocusChanged: {parent.text = text}
+        font.family: uiFont.name
     }
 }
