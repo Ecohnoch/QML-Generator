@@ -16,8 +16,8 @@ Item {
     TextField{
         id: propertyChange
         x: propertyName.x + propertyName.width; y: 0
+        visible: (proText === "source" || proText === "color" || proText === "textColor" || proText === "sure" || proText === "isLoop") ? false : true
         anchors.centerIn: parent
-
         onActiveFocusChanged: {parent.text = text}
         font.family: uiFont.name
     }

@@ -6,5 +6,11 @@
         <file>WECanvas.qml</file>
         <file>WEText.qml</file>
         <file>WELabel.qml</file>
+        <file>ColorSelector.qml</file>
+        <file>ImageSelector.qml</file>
+        <file>AboutWindow.qml</file>
+        <file>WEBAnimate.qml</file>
+        <file>WEMusic.qml</file>
+        <file>WERealButton.qml</file>
     </qresource>
 </RCC>

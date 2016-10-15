@@ -3,7 +3,8 @@ import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.4
 
 Button {
-    text: "Rect"
+    property string isWhat
+    text: isWhat
     style: ButtonStyle {
         background: Rectangle {
             implicitWidth: 50

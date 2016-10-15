@@ -1,4 +1,5 @@
 import QtQuick 2.7
+import QtQuick.Layouts 1.1
 import QtQuick.Window 2.0
 
 Rectangle {
@@ -9,7 +10,7 @@ Rectangle {
     property string source
     property string text
     property int textSize
-    property string textColor
+    property string textColor: ""
     Image{
         anchors.fill: parent
         source: parent.source
@@ -33,6 +34,8 @@ Rectangle {
         }
         drag.target: parent
         drag.axis: Drag.XAndYAxis
+        drag.minimumX: 0; drag.maximumX: 640 - rect.width
+        drag.minimumY: 20; drag.maximumY: 480 - rect.height
 
 
         onWheel:function(e){
@@ -45,6 +48,11 @@ Rectangle {
             }
         }
     }
+
+    function dialogShow(){
+        dialog.show()
+    }
+
     Window{
         id: dialog
         title: "Propertied"
@@ -57,12 +65,30 @@ Rectangle {
             WELabel {proText: "y"; onTextChanged: {rect.y = parseInt(text)}}
             WELabel {proText: "width"; onTextChanged: {rect.width = parseInt(text)}}
             WELabel {proText: "height"; onTextChanged: {rect.height = parseInt(text)}}
-            WELabel {proText: "color"; onTextChanged: {rect.color = text}}
-            WELabel {proText: "source"; onTextChanged: {rect.source = text}}
+            WELabel {proText: "color"; onTextChanged: {rect.color = text}
+                ColorSelector{
+                    Layout.fillWidth: true
+                    x: 87
+                    color : rect.color
+                    onColorChanged: rect.color = color
+                }
+            }
+            WELabel {proText: "source"; onTextChanged: {rect.source = text}
+                ImageSelector{
+                    Layout.fillWidth: true
+                    x: 87
+                    path : rect.source
+                    onPathChanged: rect.source = path
+                }}
             WELabel {proText: "recText"; onTextChanged: {rect.text = text}}
             WELabel {proText: "textSize"; onTextChanged: {rect.textSize = parseInt(text)}}
-            WELabel {proText: "textColor"; onTextChanged: {rect.textColor = text}}
-
+            WELabel {proText: "textColor"; onTextChanged: {rect.textColor = text}
+                ColorSelector{
+                    Layout.fillWidth: true
+                    x: 87
+                    color : "#00000000"
+                    onColorChanged: rect.textColor = color
+                }}
         }
 
     }
