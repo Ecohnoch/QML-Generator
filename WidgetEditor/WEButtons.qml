@@ -3,13 +3,14 @@ import QtQuick.Controls 1.3
 import QtQuick.Controls.Styles 1.4
 
 Button {
+    id: button
     property string isWhat
     text: isWhat
     style: ButtonStyle {
         background: Rectangle {
             implicitWidth: 50
             implicitHeight: 50
-            border.width: control.activeFocus ? 2 : 1
+            border.width: button.activeFocus ? 2 : 1
             border.color: "#888"
             radius: 4
             gradient: Gradient {

@@ -10,6 +10,7 @@ Window {
     modality: Qt.ApplicationModal
     color: systemPalette.window
     //FontLoader{id: font; source: "qrc:/font/liberationmono.ttf"}
+
     TextArea {
         id: mainText
         anchors.fill: parent

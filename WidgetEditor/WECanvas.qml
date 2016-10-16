@@ -24,7 +24,7 @@ Item {
 
     function createRect(){
         var rect = Qt.createComponent("WERect.qml")
-        var rectObj = rect.createObject(mainWindow, {"x":0, "y":20})
+        var rectObj = rect.createObject(mainItem, {"x":0, "y":20})
         rects.push(rectObj)
         allObj.push(rectObj)
         objName.push("rect")
@@ -32,7 +32,7 @@ Item {
 
     function creatAnimatedImage(){
         var aniImage = Qt.createComponent("WEBAnimate.qml")
-        var aniImageObj = aniImage.createObject(mainWindow, {"x": 0, "y":20})
+        var aniImageObj = aniImage.createObject(mainItem, {"x": 0, "y":20})
         aniImages.push(aniImageObj)
         allObj.push(aniImageObj)
         objName.push("aniImg")
@@ -40,7 +40,7 @@ Item {
 
     function creatMusic(){
         var music = Qt.createComponent("WEMusic.qml")
-        var musicObj = music.createObject(mainWindow, {"x": 0, "y": 20})
+        var musicObj = music.createObject(mainItem, {"x": 0, "y": 20})
         musics.push(musicObj)
         allObj.push(musicObj)
         objName.push("music")
@@ -48,7 +48,7 @@ Item {
 
     function creatButton(){
         var button = Qt.createComponent("WERealButton.qml")
-        var buttonObj = button.createObject(mainWindow, {"x": 0, "y": 20})
+        var buttonObj = button.createObject(mainItem, {"x": 0, "y": 20})
         buttons.push(button)
         allObj.push(button)
         objName.push("button")

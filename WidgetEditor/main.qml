@@ -4,6 +4,8 @@ import QtQuick.Controls 1.3
 import QtQuick.Window 2.0
 
 
+
+
 ApplicationWindow {
     id: mainWindow
     visible: true
@@ -14,8 +16,8 @@ ApplicationWindow {
     menuBar: MenuBar{
         Menu{
             title: "File"
-            MenuItem{text: "OutPut"; onTriggered: {outPut.textShow(); outPut.show()}}
-            MenuItem{text: "Manage"; onTriggered: {objWindow.show()}}
+            MenuItem{text: "OutPut"; onTriggered: mainView.outPutWindowShow()}
+            MenuItem{text: "Manage"; onTriggered: mainView.objWindowShow()}
             MenuItem{text: "Load"; onTriggered: {var text = outPut.getAllText()
                 var newObj = Qt.createQmlObject(text, loadWindow)
                 loadWindow.show()}}
@@ -26,71 +28,79 @@ ApplicationWindow {
         }
     }
 
+    SystemPalette{
+        id: systemPalette
+    }
 
-    FontLoader{id: uiFont; source: "../font/liberationmono.ttf"}
-    SystemPalette{id: systemPalette}
-    Rectangle{
-        id: whiteBg
-        color: "white"
+    FontLoader{
+        id: uiFont
+        source: "../font/liberationmono.ttf"
+    }
+
+//    WEItem{
+//        id: item
+//    }
+
+    TabView{
+        id: mainView
         width: 640; height: 480
-        x: 0; y: 0
-    }
-
-    // ListView  get more buttons
-    Column{
-        x: 655; y: 25
-        spacing: 20
-        WEButtons{isWhat: "rect"; onClicked: {canvas.createRect()}}
-        WEButtons{isWhat: "aniImg"; onClicked: {canvas.creatAnimatedImage()}}
-        WEButtons{isWhat: "music"; onClicked: {canvas.creatMusic()}}
-        WEButtons{isWhat: "Manager"; onClicked: {canvas.creatButton()}}
-    }
-
-
-    WECanvas{
-        id: canvas
-        x: 0; y: 0
-    }
-
-    WEText{
-        id: outPut
-    }
-
-    AboutWindow{
-        id: about
-    }
-
-    Window{
-        id: objWindow
-        title: "Objects"
-        width: 300; height: 400
-        color: systemPalette.window
-        Repeater{
-            y: 20; height: 300
-            model: canvas.getObjNum()
-            Button{
-                y: 20 + 60 * index
-                text: canvas.getObjName(index)
-                onClicked: {canvas.getObj(index).dialogShow()}
+        property var tabs: []
+        MouseArea{
+            anchors.fill: parent
+            acceptedButtons: Qt.LeftButton | Qt.RightButton
+            onClicked: {
+                if (mouse.button === Qt.RightButton) {
+                    contentMenu.popup()
+                }
             }
         }
-    }
-
-    Window{
-        id: loadWindow
-        title: "About The Author"
-        width: 720; height: 500
-        minimumWidth: 320; minimumHeight: 240
-        modality: Qt.ApplicationModal
-        color: systemPalette.window
-        ScrollView{
-            anchors.fill: parent
+        Menu{
+            id: contentMenu
+            MenuItem{
+                text: "add"
+                onTriggered: {
+                    mainView.addComponent()
+                }
+            }
+            MenuItem{
+                text: "delete"
+                onTriggered: {
+                    mainView.deleteComponent()
+                }
+            }
+            MenuItem{
+                text: "rename"
+                onTriggered: {
+                }
+            }
         }
+        WETab{
+            title: "defaultItem"
+        }
+
+        function outPutWindowShow(){
+            mainView.getTab(currentIndex).item.outPutShow()
+        }
+        function objWindowShow(){
+            mainView.getTab(currentIndex).item.objWindowShow()
+        }
+
+        function addComponent(){
+            var component = Qt.createComponent("WETab.qml")
+            var comObj = component.createObject(mainView)
+            tabs.push(comObj)
+            comObj.title = "Item" + tabs.length
+        }
+
+        function deleteComponent(){
+            mainView.removeTab(mainView.currentIndex)
+        }
+
+        function renameComponent(){
+
+        }
+
     }
-
-
-
-
 
 
 }

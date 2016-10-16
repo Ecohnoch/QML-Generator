@@ -12,5 +12,7 @@
         <file>WEBAnimate.qml</file>
         <file>WEMusic.qml</file>
         <file>WERealButton.qml</file>
+        <file>WEItem.qml</file>
+        <file>WETab.qml</file>
     </qresource>
 </RCC>
