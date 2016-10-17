@@ -31,9 +31,6 @@ Item {
         id: outPut
     }
 
-    AboutWindow{
-        id: about
-    }
 
     Window{
         id: objWindow
@@ -69,6 +66,12 @@ Item {
     }
     function objWindowShow(){
         objWindow.show()
+    }
+    function getAllText(){
+        return outPut.getAllText()
+    }
+    function getLoadWindow(){
+        return loadWindow
     }
 
 }

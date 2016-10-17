@@ -3,9 +3,6 @@ import QtQuick 2.7
 import QtQuick.Controls 1.3
 import QtQuick.Window 2.0
 
-
-
-
 ApplicationWindow {
     id: mainWindow
     visible: true
@@ -18,9 +15,9 @@ ApplicationWindow {
             title: "File"
             MenuItem{text: "OutPut"; onTriggered: mainView.outPutWindowShow()}
             MenuItem{text: "Manage"; onTriggered: mainView.objWindowShow()}
-            MenuItem{text: "Load"; onTriggered: {var text = outPut.getAllText()
-                var newObj = Qt.createQmlObject(text, loadWindow)
-                loadWindow.show()}}
+            MenuItem{text: "Load"; onTriggered: {var text = mainView.getAlltext()
+                var newObj = Qt.createQmlObject(text, mainView.getLoadWindow())
+                mainView.getLoadWindow().show()}}
         }
         Menu{
             title: "About"
@@ -84,6 +81,12 @@ ApplicationWindow {
         function objWindowShow(){
             mainView.getTab(currentIndex).item.objWindowShow()
         }
+        function getAlltext(){
+            return mainView.getTab(currentIndex).item.getAllText()
+        }
+        function getLoadWindow(){
+            return mainView.getTab(currentIndex).item.getLoadWindow()
+        }
 
         function addComponent(){
             var component = Qt.createComponent("WETab.qml")
@@ -97,10 +100,12 @@ ApplicationWindow {
         }
 
         function renameComponent(){
-
         }
 
     }
 
+    AboutWindow{
+        id: about
+    }
 
 }
